@@ -1,6 +1,6 @@
 :root {
-    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    --animation-duration: 250ms;
+    --time-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --animation: 500ms;
 }
 
 html {
@@ -18,15 +18,29 @@ body {
     min-height: 100vh;
 }
 
+.lightbox.is-open {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+.lightbox_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 .gallery {
     display: grid;
     width: 1200px;
+    grid-template-columns: repeat(auto-fill, minmax(580px, 1fr));
+    grid-auto-rows: 240px;
+    grid-gap: 12px;
     list-style: none;
     margin-left: auto;
     margin-right: auto;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    grid-auto-rows: 240px;
-    grid-gap: 12px;
     padding: 0;
 }
 
@@ -42,34 +56,20 @@ body {
 .lightbox {
     display: flex;
     align-items: center;
+    opacity: 0;
     justify-content: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    opacity: 0;
     pointer-events: none;
-    transition: opacity var(--animation-duration) var(--timing-function);
-}
-
-.lightbox.is-open {
-    opacity: 1;
-    pointer-events: initial;
-}
-
-.lightbox_overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
+    transition: opacity var(--animation) var(--time-function);
 }
 
 .lightbox_content {
     transform: scale(0.95);
-    transition: transform var(--animation-duration) var(--timing-function);
+    transition: transform var(--animation) var(--time-function);
 }
 
 .lightbox.is-open .lightbox_content {
@@ -100,11 +100,10 @@ body {
     background-color: transparent;
     color: #fff;
     cursor: pointer;
-    transition: background-color var(--animation-duration) var(--timing-function);
+    transition: background-color var(--animation) var(--time-function);
     outline: none;
-    background-image: url('../images/icon-close.svg');
     background-position: center;
-    background-size: 60%;
+    background-size: 40%;
     background-repeat: no-repeat;
 }
 
@@ -126,7 +125,7 @@ body {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    transition: transform var(--animation-duration) var(--timing-function);
+    transition: transform var(--animation) var(--time-function);
 }
 
 .gallery_link {
