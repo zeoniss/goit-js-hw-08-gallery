@@ -35,7 +35,7 @@ function createGalleryList(img) {
 
 function onOpenModal(event) {
     event.preventDefault()
-        // Проверяем тип узла, если не изображение - выходим из функции
+        // Проверяем тип узла, если не изображение - то мы выходим из функции
     if (event.target.nodeName !== 'IMG') {
         return
     }
