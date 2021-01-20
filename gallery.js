@@ -16,26 +16,20 @@ overlayElem.addEventListener('click', onCloseModalOnOverlay);
 function createGalleryList(img) {
     return img
         .map(({ original, description, preview }) => {
-            return `<li class="gallery_item">
-    <a
-      class="gallery_link"
-      href="${original}"
-    >
-      <img
-        class="gallery_image"
-        src="${preview}"
-        data-source="${original}"
-        alt="${description}"
-      />
+            return `
+<li class="gallery_item">
+    <a class="gallery_link" href="${original}">
+        <img class="gallery_image" src="${preview}" data-source="${original}" alt="${description}" />
     </a>
-  </li>`;
+</li>
+`;
         })
         .join('');
 }
 
 function onOpenModal(event) {
     event.preventDefault();
-    // Проверяем тип узла, если не изображение - то мы выходим из функции
+    // Проверяем тип узла, если не изображение - выходим из функции
     if (event.target.nodeName !== 'IMG') {
         return;
     }
