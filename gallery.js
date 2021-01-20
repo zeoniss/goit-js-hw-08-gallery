@@ -4,6 +4,7 @@ const closeBtnElem = document.querySelector('.lightbox_button');
 const galleryElem = document.querySelector('.js-gallery');
 const modalElem = document.querySelector('.js-lightbox');
 const overlayElem = document.querySelector('.lightbox_overlay');
+
 const galleryListElem = createGalleryList(galleryItems);
 
 galleryElem.insertAdjacentHTML('beforeend', galleryListElem);
